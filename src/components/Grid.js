@@ -1,13 +1,15 @@
 import React from 'react';
-import Row from './Row';
+import Cell from './Cell';
 
-const Grid = ({matrix}) => {
-  const CellList =  matrix.map((linkedList, i) => {
-      return(<div ><Row key={i} linkedList={linkedList}/></div >)
-    });
+const Grid = ({items}) => {
+  const CellList =  items.map((item, i) => {
+    return(
+      <Cell key={i} item={item}/>
+    );
+  });
 
   return(
-    <div >
+    <div className='grid-container'>
       {CellList}
     </div>
   )

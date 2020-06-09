@@ -1,18 +1,23 @@
 import React from 'react';
 import { getDayInGrid } from './../timelineItems';
 
-const Cell = ({node}) => {
+const Cell = ({item}) => {
   let eventStyle = {
-    gridColumn: `${getDayInGrid(node.item.start)}/${getDayInGrid(node.item.end)}`
+    gridColumn: `${getDayInGrid(item.start)}/${getDayInGrid(item.end)}`
   }
-  
+
+  const onItemSelect = (item) => {
+    console.log('item', item);
+  }
+
   return(
     <div
-      key={node.item.id}
+      key={item.id}
       className='grid-cell'
-      style={eventStyle}>
-      {node.item.id}
-      {node.item.name}
+      style={eventStyle}
+      onClick={() => onItemSelect(item)}>
+      {item.id}
+      {item.name}
     </div>
   )
 }

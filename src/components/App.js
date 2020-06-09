@@ -4,18 +4,18 @@ import Grid from './Grid';
 import Header from './Header';
 
 const App = () => {
-  let [matrix, setMatrix] = useState([])
+  let [items, setItems] = useState([])
 
   useEffect(() => {
-    setMatrix(Items.orgnanizeItems())
+    let items = new Items()
+    setItems(items.getSortedItems())
   }, []);
 
   return (
     <div>
       <Header/>
-      { matrix &&
-        <Grid
-          matrix={matrix}/>
+      { items &&
+        <Grid items={items}/>
       }
     </div>
   );
