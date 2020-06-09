@@ -1,23 +1,14 @@
 import React from 'react';
-import { getDayInGrid } from './../timelineItems';
+import Row from './Row';
 
-const Grid = ({timelineItems}) => {
-  const CellList = timelineItems.map((item) => {
-    let eventStyle = {
-      gridColumn: `${getDayInGrid(item.start)}/${getDayInGrid(item.end)}`
-    }
-
-    return(
-      <div className='grid-cell'
-        style={eventStyle}>
-        {item.name}
-      </div>
-    )
-  });
+const Grid = ({matrix}) => {
+  const CellList =  matrix.map((linkedList, i) => {
+      return(<div ><Row key={i} linkedList={linkedList}/></div >)
+    });
 
   return(
-    <div className='grid-container'>
-      { CellList }
+    <div >
+      {CellList}
     </div>
   )
 }

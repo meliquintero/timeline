@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Items from './../Items';
 import Grid from './Grid';
-
-import {timelineItems} from './../timelineItems';
+import Header from './Header';
 
 const App = () => {
+  let [matrix, setMatrix] = useState([])
+
+  useEffect(() => {
+    setMatrix(Items.orgnanizeItems())
+  }, []);
+
   return (
     <div>
-      <Grid timelineItems={timelineItems}/>
+      <Header/>
+      { matrix &&
+        <Grid
+          matrix={matrix}/>
+      }
     </div>
   );
 }

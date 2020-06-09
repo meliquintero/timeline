@@ -7,8 +7,8 @@ body {
 .grid-container {
   display: grid;
   color: rgb(90, 90, 90);
-  grid-template-rows: repeat(3, 100px);
-  grid-template-columns: repeat(46, auto);
+  grid-template-rows: repeat(1, 50px);
+  grid-template-columns: repeat(46, 30px);
 }
 
 .grid-cell {
