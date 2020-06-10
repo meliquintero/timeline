@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDayInGrid } from './../timelineItems';
-
-const ItemDetails = ({item, onItemEdit}) => {
-  return(
-    <div>
-      {item.id}
-      {item.name}
-    </div>
-  )
-}
+import { getDayInGrid } from './../utils';
 
 const Cell = ({item, onItemEdit}) => {
   let [isEditing, setIsEditing] = useState(false)
@@ -41,17 +32,16 @@ const Cell = ({item, onItemEdit}) => {
       key={item.id}
       style={eventStyle}
       onDoubleClick={() => onItemSelect()}>
-      {isEditing &&
+      {isEditing ? (
         <form onSubmit={handleSubmit}>
           <input
             type='text'
             defaultValue={item.name}
             onChange={handleChange}/>
         </form >
-      }
-      {!isEditing &&
-        <ItemDetails item={item} />
-      }
+      ) : (
+        <span> {item.name}  </span>
+      )}
     </div>
   )
 }

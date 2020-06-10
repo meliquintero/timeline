@@ -1,13 +1,3 @@
-const daysBefore = {
-  '01': 0,
-  '02': 31,
-}
-
-const getDayInGrid = (date) => {
-  let [_, month, day] = date.split('-')
-  return daysBefore[month] + parseInt(day, 10)
-};
-
 const timelineItems = [
   {
     id: 1,
@@ -95,4 +85,4 @@ const timelineItems = [
   }
 ];
 
-export {timelineItems, getDayInGrid};
+export default timelineItems

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Items from './../Items';
 import Grid from './Grid';
-import Header from './Header';
 
 const App = () => {
   let [items, setItems] = useState([])
@@ -21,7 +20,6 @@ const App = () => {
 
   return (
     <div>
-      <Header/>
       { items &&
         <Grid items={items} onItemEdit={onItemEdit}/>
       }

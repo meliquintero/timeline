@@ -1,10 +1,9 @@
-import { timelineItems } from './timelineItems';
+import timelineItems from './timelineItems';
 import LinkedList from './LinkedList.js';
 
 class Items {
   constructor(){
     this.linkedLists = this.setSortedNodes();
-    this.matrix = [];
   }
 
   setSortedNodes() {
