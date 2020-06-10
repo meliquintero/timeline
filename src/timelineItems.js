@@ -4,8 +4,8 @@ const daysBefore = {
 }
 
 const getDayInGrid = (date) => {
-  let [year, month, day] = date.split('-')
-  return daysBefore[month] + parseInt(day)
+  let [_, month, day] = date.split('-')
+  return daysBefore[month] + parseInt(day, 10)
 };
 
 const timelineItems = [

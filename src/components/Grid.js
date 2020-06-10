@@ -1,11 +1,14 @@
 import React from 'react';
 import Cell from './Cell';
 
-const Grid = ({items}) => {
+const Grid = ({items, onItemEdit}) => {
   const CellList =  items.map((item, i) => {
     return(
-      <Cell key={i} item={item}/>
-    );
+      <Cell
+        key={i}
+        item={item}
+        onItemEdit={onItemEdit}/>
+    )
   });
 
   return(

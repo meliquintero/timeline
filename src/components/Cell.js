@@ -1,23 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getDayInGrid } from './../timelineItems';
 
-const Cell = ({item}) => {
-  let eventStyle = {
-    gridColumn: `${getDayInGrid(item.start)}/${getDayInGrid(item.end)}`
+const ItemDetails = ({item, onItemEdit}) => {
+  return(
+    <div>
+      {item.id}
+      {item.name}
+    </div>
+  )
+}
+
+const Cell = ({item, onItemEdit}) => {
+  let [isEditing, setIsEditing] = useState(false)
+  let [itemCopy, setItemCopy] = useState(item)
+
+  useEffect(() => {
+    onItemEdit(itemCopy);
+  }, [itemCopy]);
+
+  const onItemSelect = () => {
+    setIsEditing(!isEditing)
   }
 
-  const onItemSelect = (item) => {
-    console.log('item', item);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsEditing(!isEditing)
+  }
+
+  const handleChange = (e) => {
+    setItemCopy({...itemCopy, name: e.target.value})
+  }
+
+  let eventStyle = {
+    gridColumn: `${getDayInGrid(item.start)}/${getDayInGrid(item.end)+1}`
   }
 
   return(
     <div
-      key={item.id}
       className='grid-cell'
+      key={item.id}
       style={eventStyle}
-      onClick={() => onItemSelect(item)}>
-      {item.id}
-      {item.name}
+      onDoubleClick={() => onItemSelect()}>
+      {isEditing &&
+        <form onSubmit={handleSubmit}>
+          <input
+            type='text'
+            defaultValue={item.name}
+            onChange={handleChange}/>
+        </form >
+      }
+      {!isEditing &&
+        <ItemDetails item={item} />
+      }
     </div>
   )
 }

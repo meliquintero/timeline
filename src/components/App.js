@@ -11,11 +11,19 @@ const App = () => {
     setItems(items.getSortedItems())
   }, []);
 
+  const onItemEdit = (itemPased) => {
+    const copyItems = items.map(item => {
+      return (item.id === itemPased.id) ? itemPased : item;
+    });
+
+    setItems(copyItems);
+  }
+
   return (
     <div>
       <Header/>
       { items &&
-        <Grid items={items}/>
+        <Grid items={items} onItemEdit={onItemEdit}/>
       }
     </div>
   );
