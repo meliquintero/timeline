@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Items from './../Items';
+import Header from './Header';
 import Grid from './Grid';
 
 const App = () => {
@@ -19,7 +20,9 @@ const App = () => {
   }
 
   return (
-    <div>
+
+    <div className='ui container'>
+      <Header/>
       { items &&
         <Grid items={items} onItemEdit={onItemEdit}/>
       }

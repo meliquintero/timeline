@@ -1,29 +1,9 @@
 import React from 'react';
-import { CONSTANTS, getNumberOfDays } from './../utils';
+import {generateDays, generateMonths} from './gridHeaders';
 
 import Cell from './Cell';
 
 const Grid = ({items, onItemEdit}) => {
-  const getHeaderDays = () => {
-    let date = CONSTANTS.startTimeline
-
-    let daysRow = [];
-
-    for (let i = 1; i < getNumberOfDays()+2; i++) {
-      let dayStyle = { gridColumn: `${i}/${i+1}`}
-
-      const copy = new Date(Number(date))
-      copy.setDate(date.getDate() + i)
-
-      daysRow.push(
-        <div key={`day${i}`} className='grid-cell' style={dayStyle}>
-          {copy.getDate()}
-        </div>
-      );
-    }
-    return daysRow
-  }
-
   const CellList = items.map((item, i) => {
     return(
       <Cell
@@ -34,8 +14,10 @@ const Grid = ({items, onItemEdit}) => {
   });
 
   return(
-    <div className='grid-container' >
-      {[...getHeaderDays(), ...CellList]}
+    <div className='grid-container'>
+      {generateMonths()}
+      {generateDays()}
+      {CellList}
     </div>
   )
 }

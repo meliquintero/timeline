@@ -1,18 +1,33 @@
 const CONSTANTS = {
   startTimeline: new Date('2018-01-01'),
-  endTimeline: new Date('2018-02-16')
+  endTimeline: new Date('2018-02-16'),
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
+  timeToDays: 1000 * 3600 * 24
 }
 
 const getNumberOfDays = () => {
-  return (CONSTANTS.endTimeline - CONSTANTS.startTimeline) / (1000 * 3600 * 24)
+  return (CONSTANTS.endTimeline - CONSTANTS.startTimeline) / (CONSTANTS.timeToDays)
 }
 
 const getDayInGrid = (date) => {
   let date2 = new Date(date);
-  let Difference_In_Time = date2.getTime() - CONSTANTS.startTimeline.getTime();
-  let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24)
+  let DifferenceInTime = date2.getTime() - CONSTANTS.startTimeline.getTime();
+  let DifferenceInDays = DifferenceInTime / (CONSTANTS.timeToDays)
 
-  return Difference_In_Days
+  return DifferenceInDays
 };
 
 export {getDayInGrid, CONSTANTS, getNumberOfDays};

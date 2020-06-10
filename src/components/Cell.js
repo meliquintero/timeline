@@ -23,7 +23,7 @@ const Cell = ({item, onItemEdit}) => {
   }
 
   let eventStyle = {
-    gridColumn: `${getDayInGrid(item.start)}/${getDayInGrid(item.end)+1}`
+    gridColumn: `${getDayInGrid(item.start)+1}/${getDayInGrid(item.end)+2}`
   }
 
   return(
@@ -33,7 +33,7 @@ const Cell = ({item, onItemEdit}) => {
       style={eventStyle}
       onDoubleClick={() => onItemSelect()}>
       {isEditing ? (
-        <form onSubmit={handleSubmit}>
+        <form className='ui form' onSubmit={handleSubmit}>
           <input
             type='text'
             defaultValue={item.name}
